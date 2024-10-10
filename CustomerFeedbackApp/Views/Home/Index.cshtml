@@ -1,0 +1,135 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="container-md shadow p-3 mb-5 rounded">
+    <h4 class="mb-3 text-center">Feedback form</h4>
+    <form id="feedbackform">
+        <div class="row mb-3">
+            <label for="customername" class="col-sm-2 col-form-label">Name</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="customername" name="customername">
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label for="emailaddress" class="col-sm-2 col-form-label">Email</label>
+            <div class="col-sm-10">
+                <input type="email" class="form-control" id="emailaddress" name="emailaddress">
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <label for="feedbacktype" class="col-sm-2 col-form-label">Feedback type</label>
+            <div class="col-sm-10">
+                <select class="form-select" id="feedbacktype" name="feedbacktype">
+                    <option value="">Choose...</option>
+                    <option value="10000">Epic</option>
+                    <option value="10001">Improvement</option>
+                    <option value="10002">Task</option>
+                    <option value="10003">Sub-task</option>
+                    <option value="10004">New Feature</option>
+                    <option value="10005">Bug</option>
+                </select>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label for="feedbackmessage" class="col-sm-2 col-form-label">Message </label>
+            <div class="col-sm-10">
+                <textarea class="form-control" id="feedbackmessage" name="feedbackmessage" rows="3"></textarea>
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <label for="appversion" class="col-sm-2 col-form-label">App version</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control" id="appversion" name="appversion">
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col-sm-2"></div>
+            <div class="col-sm-10 text-center">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </div>
+        
+    </form>
+</div>
+
+@section Scripts {
+    <script>
+		$(document).ready(function () {
+
+			$("#feedbackform").validate({
+                submitHandler: function (form) {
+
+                    $.ajax({
+                        method: "post",
+                        url: "Home/CreateFeedback",
+                        dataType: 'html',
+                        data: $("#feedbackform").serialize(),
+                        cache: false,
+                        processData: false
+                    })
+                    .done(function () {
+                        toastr["success"]("gov2biz", "Feedback sent successfully");
+                    })
+                    .fail(function () {
+                        toastr["error"]("gov2biz", "Error occurred while sending Feedback");
+                    })
+                    .always(function () {
+                            $("#feedbackform").trigger("reset");
+                    });
+
+                    return false;
+                },
+				rules: {
+					customername: {
+						required: true,
+                        minlength: 4
+					},					
+					emailaddress: {
+						required: true,
+						email: true
+					},
+					feedbacktype: "required",
+					feedbackmessage: {
+						required: true,
+                        minlength: 4
+					},                    
+                    appversion: "required",
+				},
+				messages: {
+					customername: {
+						required: "Please enter your full name",
+						minlength: "Your full name must consist of at least 4 characters"
+					},
+					emailaddress: "Please enter a valid email address",
+					feedbacktype: "Select the feedback type",
+                    feedbackmessage: {
+                        required: "Please enter your feedback message",
+                        minlength: "Your feedback must consist of at least 4 characters",
+                    },
+                    appversion: "Please enter the application version"
+				},
+                errorElement: "span",
+				errorPlacement: function (error, element) {
+					// Add the `help-block` class to the error element
+					error.addClass("help-block");
+
+					if (element.prop("type") === "checkbox") {
+						error.insertAfter(element.parent("label"));
+					} else {
+						error.insertAfter(element);
+					}
+				},
+				highlight: function (element, errorClass, validClass) {
+                    $(element).parents(".col-sm-10").addClass("has-error").removeClass("has-success");
+				},
+				unhighlight: function (element, errorClass, validClass) {
+                    $(element).parents(".col-sm-10").addClass("has-success").removeClass("has-error");
+				}
+			});
+		});
+    </script>
+}
