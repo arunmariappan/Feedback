@@ -9,12 +9,12 @@ namespace CustomerFeedbackApp.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly JiraClient _client;
+        private readonly IJiraClient _client;
         private readonly ILogger<HomeController> _logger;
         private readonly IUnitOfWork _unitOfWork; // readonly means that the variable can only be assigned a value in the constructor
 
         public HomeController(
-            JiraClient client,
+            IJiraClient client,
             ILogger<HomeController> logger,
             IUnitOfWork unitOfWork
             )
@@ -36,61 +36,12 @@ namespace CustomerFeedbackApp.Controllers
             if (ModelState.IsValid)
             {
                 await _unitOfWork.Feedbacks.Add(feedback); // add the feedback to the database
-                await _unitOfWork.CompleteAsync(); // save the changes to the database
-                var dateNow = System.DateTime.Now.ToString("MM/dd/yyyy");
-                var jsonString = $$"""
-                        {
-                            "fields": {
-                                "project": { 
-                                    "key": "GC"
-                                },
-                                "summary": "Feedback",
-                                "description": {
-                                        "type": "doc",
-                                        "version": 1,
-                                        "content": [
-                                            {
-                                                "type": "paragraph",
-                                                "content": [
-                                                    {
-                                                        "type": "text",
-                                                        "text": "{{feedback.FeedbackMessage}}"
-                                                    }
-                                                ]
-                                            }
-                                        ]
-                                    },
-                                "issuetype": {
-                                    "id": "{{feedback.FeedbackType}}"
-                                },
-                                "priority": {
-                                    "id": "3",
-                                    "name": "Medium"
-                                },
-                                "environment": {
-                                        "type": "doc",
-                                        "version": 1,
-                                        "content": [
-                                            {
-                                                "type": "paragraph",
-                                                "content": [
-                                                    {
-                                                        "type": "text",
-                                                        "text": "Production"
-                                                    }
-                                                ]
-                                            }
-                                        ]
-                                    },
-                                "duedate": "{{dateNow}}"
-                            }
-                        }
-                    """;
-                var response = await _client.PostAsync(jsonString);
+                int saveCount = await _unitOfWork.CompleteAsync(); // save the changes to the database
 
+                
+                var response = await _client.CreateJiraIssue(feedback);
 
-
-                return Ok(HttpStatusCode.Created);
+                return Ok(new { status = (saveCount > 0), issueKey = response.Key.Value });
             }
 
             return new JsonResult("Something went wrong") { StatusCode = 500 };

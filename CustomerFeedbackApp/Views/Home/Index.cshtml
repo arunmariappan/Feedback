@@ -71,14 +71,22 @@
                         cache: false,
                         processData: false
                     })
-                    .done(function () {
-                        toastr["success"]("gov2biz", "Feedback sent successfully");
+                    .done(function (response) {
+                        var responseData = JSON.parse(response);
+                        if (responseData.status) {
+                            toastr["success"]("gov2biz", "Feedback sent successfully and Jira Issue created. Issue Id " + responseData.issueKey);
+                        } else {
+                            toastr["error"]("gov2biz", "Error occurred while saving the Feedback");
+                        }                        
                     })
                     .fail(function () {
                         toastr["error"]("gov2biz", "Error occurred while sending Feedback");
                     })
                     .always(function () {
-                            $("#feedbackform").trigger("reset");
+                        $("#feedbackform").trigger("reset");
+                        setTimeout(function () {
+                            $("#overlay").fadeOut(300);
+                        }, 500);
                     });
 
                     return false;

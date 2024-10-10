@@ -22,9 +22,9 @@ namespace CustomerFeedbackApp.Services.Repositories
             Feedbacks = new FeedbackRepository(_context, _logger);
         }
 
-        public async Task CompleteAsync()
+        public async Task<int> CompleteAsync()
         {
-            await _context.SaveChangesAsync();
+            return await _context.SaveChangesAsync();
         }
 
         public void Dispose()

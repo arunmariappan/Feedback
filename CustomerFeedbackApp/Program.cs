@@ -11,7 +11,7 @@ var connectionString = builder.Configuration.GetConnectionString("DefaultConnect
 
 // Add services to the container.
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
-builder.Services.AddHttpClient<JiraClient>();
+builder.Services.AddScoped<IJiraClient, JiraClient>();
 
 builder.Services.AddControllersWithViews();
 
