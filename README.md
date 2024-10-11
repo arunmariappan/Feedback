@@ -1,6 +1,6 @@
 # Feedback App
 
-## Technologies Used:-
+## Technologies Used
 - Front End
   - [ASP.NET MVC](https://dotnet.microsoft.com/en-us/apps/aspnet)
   - [Bootstrap v5](https://getbootstrap.com/)
@@ -49,9 +49,10 @@ For Bug tracking we are using Jira 30 days trial account(Personal account arunja
   - **"BasicAuthenticationPassword"**: "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx" - copy paste the API key gerated from https://id.atlassian.com/manage-profile/security/api-tokens
  
 ### Issue tracking in Jira
-Once the user submitted the feedback, the data is saved in the Feedback table then we send the same feedback information to JIRA Rest API
+Once the user submitted the feedback, the data is saved in the Feedback table then we send the same feedback information to JIRA Rest API to create the Issue
 
-Below we have the screenshot of my Jira Issue dashboard
-![image](https://github.com/user-attachments/assets/cbafe46b-a809-48dc-90ae-11159cfe7ebe)
+Below we have the screenshot of my Jira Issue dashboard,
+![image](https://github.com/user-attachments/assets/48495a14-c1c1-48d3-b9cb-3df1ab67aa72)
+
 
 
