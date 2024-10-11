@@ -37,7 +37,11 @@
         <div class="row mb-3">
             <label for="feedbackmessage" class="col-sm-2 col-form-label">Message </label>
             <div class="col-sm-10">
-                <textarea class="form-control" id="feedbackmessage" name="feedbackmessage" rows="3"></textarea>
+                <textarea class="form-control" id="feedbackmessage" name="feedbackmessage" rows="3" maxlength="1000"></textarea>
+                <div id="the-count">
+                    <span id="current">0</span>
+                    <span id="maximum">/ 1000</span>
+                </div>
             </div>
         </div>
 

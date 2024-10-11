@@ -89,3 +89,10 @@ body {
     white-space: nowrap;
     line-height: 60px;
 }
+
+/* textarea counter */
+#the-count {
+    float: right;
+    padding: 0.1rem 0 0 0;
+    font-size: 0.875rem;
+}
