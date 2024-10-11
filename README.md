@@ -52,6 +52,7 @@ For Bug tracking we are using Jira 30 days trial account(Personal account arunja
 Once the user submitted the feedback, the data is saved in the Feedback table then we send the same feedback information to JIRA Rest API to create the Issue
 
 Below we have the screenshot of my Jira Issue dashboard,
-![image](https://github.com/user-attachments/assets/cbafe46b-a809-48dc-90ae-11159cfe7ebe)
+![image](https://github.com/user-attachments/assets/48495a14-c1c1-48d3-b9cb-3df1ab67aa72)
+
 
 
