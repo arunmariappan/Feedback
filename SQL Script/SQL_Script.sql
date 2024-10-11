@@ -78,15 +78,18 @@ ALTER DATABASE [CustomerFeedback] SET QUERY_STORE (OPERATION_MODE = READ_WRITE, 
 GO
 USE [CustomerFeedback]
 GO
-/****** Object:  Table [dbo].[Feedbacks]    Script Date: 11-10-2024 14:14:56 ******/
+
+/****** Object:  Table [dbo].[Feedbacks]    Script Date: 11-10-2024 23:20:27 ******/
 SET ANSI_NULLS ON
 GO
+
 SET QUOTED_IDENTIFIER ON
 GO
+
 CREATE TABLE [dbo].[Feedbacks](
 	[Id] [int] IDENTITY(1,1) NOT NULL,
 	[CustomerName] [nvarchar](max) NOT NULL,
-	[EmailAddress] [nvarchar](max) NOT NULL,
+	[EmailAddress] [nvarchar](max) COLLATE Latin1_General_BIN2 ENCRYPTED WITH (COLUMN_ENCRYPTION_KEY = [CEK_Auto1], ENCRYPTION_TYPE = Randomized, ALGORITHM = 'AEAD_AES_256_CBC_HMAC_SHA_256') NOT NULL,
 	[FeedbackType] [nvarchar](max) NOT NULL,
 	[FeedbackMessage] [nvarchar](max) NOT NULL,
 	[AppVersion] [nvarchar](max) NOT NULL,
@@ -97,6 +100,7 @@ CREATE TABLE [dbo].[Feedbacks](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
+
 USE [master]
 GO
 ALTER DATABASE [CustomerFeedback] SET  READ_WRITE 
