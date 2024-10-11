@@ -1,6 +1,6 @@
 # Feedback App
 
-## Technologies Used:-
+## Technologies Used
 - Front End
   - [ASP.NET MVC](https://dotnet.microsoft.com/en-us/apps/aspnet)
   - [Bootstrap v5](https://getbootstrap.com/)
