@@ -34,7 +34,7 @@ Unit of Work in Repository Pattern
 - Content Security Policy (CSP)
 
 ## Application Setup
-1. Execute the SQL_Script.sql from the code repo, which will create **CustomerFeedback** database and **Feedbacks** table
+1. Execute the **SQL Script\SQL_Script.sql** from the code repo, which will create **CustomerFeedback** database and **Feedbacks** table
 2. Open the application **appsettings.json** file and change the ConnectionStrings:DefaultConnection according to you SQL Server details and login details
 
 ## Bug Tracking
