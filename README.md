@@ -9,12 +9,14 @@
   - [toastr v2](https://github.com/CodeSeven/toastr)
   - [jquery.mask v1.14.16](https://igorescobar.github.io/jQuery-Mask-Plugin/)
 - Server Side
-  - .NET 8
+  - [.NET 8](https://dotnet.microsoft.com/en-us/download)
   - ASP.NET MVC Core
   - Entity Framework
   - [Serilog](https://serilog.net/)
 - Data Source
   - SQL Server
+- IDE
+  - [Visual Studio 2022 Community Edition](https://visualstudio.microsoft.com/thank-you-downloading-visual-studio/?sku=Community&channel=Release&version=VS2022&source=VSLandingPage&cid=2030&passive=false)
 - Third-Party
   - [Jira - Bug tracking](https://www.atlassian.com/software/jira)
  
@@ -32,8 +34,8 @@ Unit of Work in Repository Pattern
 - Content Security Policy (CSP)
 
 ## Application Setup
-1. Execute the SQL_Script.sql from the code repo, which will create CustomerFeedback database and Feedbacks table
-2. Open the application appsettings.json file and change the ConnectionStrings:DefaultConnection according to you SQL Server details and login details
+1. Execute the SQL_Script.sql from the code repo, which will create **CustomerFeedback** database and **Feedbacks** table
+2. Open the application **appsettings.json** file and change the ConnectionStrings:DefaultConnection according to you SQL Server details and login details
 
 ## Bug Tracking
 For Bug tracking we are using Jira 30 days trial account(Personal account arunjai@gmail.com)
