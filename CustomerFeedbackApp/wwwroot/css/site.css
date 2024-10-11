@@ -66,3 +66,26 @@ body {
 .has-error .form-select, .has-error .checkbox, .has-error .checkbox-inline, .has-error .control-label, .has-error .help-block, .has-error .radio, .has-error .radio-inline, .has-error.checkbox label, .has-error.checkbox-inline label, .has-error.radio label, .has-error.radio-inline label {
     color: #a94442;
 }
+
+.appLogoText {
+    padding-left: 10px !important;
+    font-size: 24px !important;
+    border-left: 1px solid grey !important;
+    color: navy !important
+}
+
+.appLogo {
+    padding-right: 10px !important;
+}
+
+.box-shadow {
+    box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    white-space: nowrap;
+    line-height: 60px;
+}
