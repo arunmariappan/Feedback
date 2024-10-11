@@ -24,7 +24,12 @@ namespace CustomerFeedbackApp.Services.Http
                 issue.Summary = "Feedback from "+ feedback.CustomerName +" for App version "+ feedback.AppVersion;
                 issue.Description = feedback.FeedbackMessage;
                 issue.Priority = "Medium"; // Need to change
-                issue.Environment = "Production";
+                // Adding environment only for Bug type
+                if(feedback.FeedbackType == "10005")
+                {
+                    issue.Environment = "Production";
+                }
+                
                 issue.DueDate = System.DateTime.Now;
 
                 return await issue.SaveChangesAsync();

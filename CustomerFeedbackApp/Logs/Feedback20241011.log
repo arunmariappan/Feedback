@@ -1,0 +1,53 @@
+[2024-10-11 14:37:05.947 +05:30  INF]  User profile is available. Using 'C:\Users\arunj\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+[2024-10-11 14:37:06.086 +05:30  INF]  Now listening on: https://localhost:7206
+[2024-10-11 14:37:06.087 +05:30  INF]  Now listening on: http://localhost:5021
+[2024-10-11 14:37:06.112 +05:30  INF]  Application started. Press Ctrl+C to shut down.
+[2024-10-11 14:37:06.112 +05:30  INF]  Hosting environment: Development
+[2024-10-11 14:37:06.112 +05:30  INF]  Content root path: D:\ArunRepo\CustomerFeedbackApp
+[2024-10-11 14:37:07.375 +05:30  INF]  Request starting HTTP/2 GET https://localhost:7206/ - null null
+[2024-10-11 14:37:07.447 +05:30  INF]  Executing endpoint 'CustomerFeedbackApp.Controllers.HomeController.Index (CustomerFeedbackApp)'
+[2024-10-11 14:37:07.468 +05:30  INF]  Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller CustomerFeedbackApp.Controllers.HomeController (CustomerFeedbackApp).
+[2024-10-11 14:37:07.838 +05:30  INF]  Entering Home page
+[2024-10-11 14:37:07.843 +05:30  INF]  Executing ViewResult, running view Index.
+[2024-10-11 14:37:07.899 +05:30  INF]  Executed ViewResult - view Index executed in 56.3195ms.
+[2024-10-11 14:37:07.902 +05:30  INF]  Executed action CustomerFeedbackApp.Controllers.HomeController.Index (CustomerFeedbackApp) in 433.5879ms
+[2024-10-11 14:37:07.902 +05:30  INF]  Request starting HTTP/2 GET https://localhost:7206/CustomerFeedbackApp.styles.css?v=_pc5rpbOIK2O_UhK5NF6rk_F5zZ0LG1590WK8mtx2J8 - null null
+[2024-10-11 14:37:07.902 +05:30  INF]  Executed endpoint 'CustomerFeedbackApp.Controllers.HomeController.Index (CustomerFeedbackApp)'
+[2024-10-11 14:37:07.905 +05:30  INF]  The file /CustomerFeedbackApp.styles.css was not modified
+[2024-10-11 14:37:07.906 +05:30  INF]  Request finished HTTP/2 GET https://localhost:7206/CustomerFeedbackApp.styles.css?v=_pc5rpbOIK2O_UhK5NF6rk_F5zZ0LG1590WK8mtx2J8 - 304 null text/css 4.4033ms
+[2024-10-11 14:37:07.908 +05:30  INF]  Request finished HTTP/2 GET https://localhost:7206/ - 200 null text/html; charset=utf-8 536.4426ms
+[2024-10-11 14:37:07.920 +05:30  INF]  Request starting HTTP/2 GET https://localhost:7206/_framework/aspnetcore-browser-refresh.js - null null
+[2024-10-11 14:37:07.920 +05:30  INF]  Request starting HTTP/2 GET https://localhost:7206/_vs/browserLink - null null
+[2024-10-11 14:37:07.923 +05:30  INF]  Request finished HTTP/2 GET https://localhost:7206/_framework/aspnetcore-browser-refresh.js - 200 13774 application/javascript; charset=utf-8 3.1683ms
+[2024-10-11 14:37:07.945 +05:30  INF]  Request finished HTTP/2 GET https://localhost:7206/_vs/browserLink - 200 null text/javascript; charset=UTF-8 24.9959ms
+[2024-10-11 14:37:08.018 +05:30  INF]  Request starting HTTP/1.1 GET https://localhost:7206/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map - null null
+[2024-10-11 14:37:08.018 +05:30  INF]  Request starting HTTP/1.1 GET https://localhost:7206/lib/toastr-master/build/toastr.js.map - null null
+[2024-10-11 14:37:08.037 +05:30  INF]  Sending file. Request path: '/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map'. Physical path: 'D:\ArunRepo\CustomerFeedbackApp\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js.map'
+[2024-10-11 14:37:08.037 +05:30  INF]  Sending file. Request path: '/lib/toastr-master/build/toastr.js.map'. Physical path: 'D:\ArunRepo\CustomerFeedbackApp\wwwroot\lib\toastr-master\build\toastr.js.map'
+[2024-10-11 14:37:08.037 +05:30  INF]  Request finished HTTP/1.1 GET https://localhost:7206/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map - 200 327261 text/plain 19.2761ms
+[2024-10-11 14:37:08.037 +05:30  INF]  Request finished HTTP/1.1 GET https://localhost:7206/lib/toastr-master/build/toastr.js.map - 200 25633 text/plain 19.2745ms
+[2024-10-11 14:39:02.267 +05:30  INF]  User profile is available. Using 'C:\Users\arunj\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+[2024-10-11 14:39:02.409 +05:30  INF]  Now listening on: https://localhost:7206
+[2024-10-11 14:39:02.409 +05:30  INF]  Now listening on: http://localhost:5021
+[2024-10-11 14:39:02.429 +05:30  INF]  Application started. Press Ctrl+C to shut down.
+[2024-10-11 14:39:02.429 +05:30  INF]  Hosting environment: Development
+[2024-10-11 14:39:02.430 +05:30  INF]  Content root path: D:\ArunRepo\CustomerFeedbackApp
+[2024-10-11 14:39:04.738 +05:30  INF]  Request starting HTTP/2 GET https://localhost:7206/ - null null
+[2024-10-11 14:39:04.831 +05:30  INF]  Executing endpoint 'CustomerFeedbackApp.Controllers.HomeController.Index (CustomerFeedbackApp)'
+[2024-10-11 14:39:04.850 +05:30  INF]  Route matched with {action = "Index", controller = "Home"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.IActionResult Index() on controller CustomerFeedbackApp.Controllers.HomeController (CustomerFeedbackApp).
+[2024-10-11 14:39:05.169 +05:30  INF]  Entering Home page
+[2024-10-11 14:39:05.173 +05:30  INF]  Executing ViewResult, running view Index.
+[2024-10-11 14:39:05.227 +05:30  INF]  Executed ViewResult - view Index executed in 54.1155ms.
+[2024-10-11 14:39:05.230 +05:30  INF]  Executed action CustomerFeedbackApp.Controllers.HomeController.Index (CustomerFeedbackApp) in 379.8027ms
+[2024-10-11 14:39:05.230 +05:30  INF]  Executed endpoint 'CustomerFeedbackApp.Controllers.HomeController.Index (CustomerFeedbackApp)'
+[2024-10-11 14:39:05.237 +05:30  INF]  Request finished HTTP/2 GET https://localhost:7206/ - 200 null text/html; charset=utf-8 502.5356ms
+[2024-10-11 14:39:05.250 +05:30  INF]  Request starting HTTP/2 GET https://localhost:7206/_framework/aspnetcore-browser-refresh.js - null null
+[2024-10-11 14:39:05.250 +05:30  INF]  Request starting HTTP/2 GET https://localhost:7206/_vs/browserLink - null null
+[2024-10-11 14:39:05.253 +05:30  INF]  Request finished HTTP/2 GET https://localhost:7206/_framework/aspnetcore-browser-refresh.js - 200 13774 application/javascript; charset=utf-8 2.9743ms
+[2024-10-11 14:39:05.283 +05:30  INF]  Request finished HTTP/2 GET https://localhost:7206/_vs/browserLink - 200 null text/javascript; charset=UTF-8 32.713ms
+[2024-10-11 14:39:05.333 +05:30  INF]  Request starting HTTP/1.1 GET https://localhost:7206/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map - null null
+[2024-10-11 14:39:05.333 +05:30  INF]  Request starting HTTP/1.1 GET https://localhost:7206/lib/toastr-master/build/toastr.js.map - null null
+[2024-10-11 14:39:05.347 +05:30  INF]  Sending file. Request path: '/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map'. Physical path: 'D:\ArunRepo\CustomerFeedbackApp\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js.map'
+[2024-10-11 14:39:05.347 +05:30  INF]  Sending file. Request path: '/lib/toastr-master/build/toastr.js.map'. Physical path: 'D:\ArunRepo\CustomerFeedbackApp\wwwroot\lib\toastr-master\build\toastr.js.map'
+[2024-10-11 14:39:05.348 +05:30  INF]  Request finished HTTP/1.1 GET https://localhost:7206/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map - 200 327261 text/plain 14.7575ms
+[2024-10-11 14:39:05.348 +05:30  INF]  Request finished HTTP/1.1 GET https://localhost:7206/lib/toastr-master/build/toastr.js.map - 200 25633 text/plain 14.7584ms

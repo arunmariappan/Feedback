@@ -1,9 +1,11 @@
 using CustomerFeedbackApp.Models;
 using CustomerFeedbackApp.Services.Http;
 using CustomerFeedbackApp.Services.IRepositories;
+using Ganss.Xss;
 using Microsoft.AspNetCore.Mvc;
-using System.Diagnostics;
 using System.Net;
+using System.Text;
+using System.Web;
 
 namespace CustomerFeedbackApp.Controllers
 {
@@ -26,31 +28,58 @@ namespace CustomerFeedbackApp.Controllers
 
         public IActionResult Index()
         {
+            _logger.LogInformation("Entering Home page");
             return View();
         }
 
         // create a new player
         [HttpPost]
-        public async Task<IActionResult> CreateFeedback(Feedback feedback) // 
+
+        public async Task<IActionResult> CreateFeedback(Feedback feedback)
         {
-            if (ModelState.IsValid)
+            try
             {
-                await _unitOfWork.Feedbacks.Add(feedback); // add the feedback to the database
-                int saveCount = await _unitOfWork.CompleteAsync(); // save the changes to the database
+                _logger.LogInformation("Start creating a Feedback.");
 
-                
-                var response = await _client.CreateJiraIssue(feedback);
+                // Sanitizing the input data
+                var sanitizer = new HtmlSanitizer();
+                feedback.CustomerName = sanitizer.Sanitize(feedback.CustomerName);
+                feedback.EmailAddress = sanitizer.Sanitize(feedback.EmailAddress);
+                feedback.FeedbackType = sanitizer.Sanitize(feedback.FeedbackType);
+                feedback.FeedbackMessage = sanitizer.Sanitize(feedback.FeedbackMessage);
+                feedback.AppVersion = sanitizer.Sanitize(feedback.AppVersion);
 
-                return Ok(new { status = (saveCount > 0), issueKey = response.Key.Value });
+                if (ModelState.IsValid)
+                {
+                    // add the feedback to the database
+                    await _unitOfWork.Feedbacks.Add(feedback);
+
+                    // save the changes to the database
+                    int saveCount = await _unitOfWork.CompleteAsync();
+
+                    _logger.LogInformation("Created a Feedback " + feedback.Id);
+
+                    // Create a JIRA issue with the feedback input
+                    var response = await _client.CreateJiraIssue(feedback);
+
+                    _logger.LogInformation("Created a Jira Issue " + response.Key.Value);
+
+                    // Encoding the values before sending
+                    return Ok(new { status = (saveCount > 0), issueKey = HttpUtility.HtmlEncode(response.Key.Value) });
+                }
+                return Ok(HttpStatusCode.BadRequest);
             }
-
-            return new JsonResult("Something went wrong") { StatusCode = 500 };
+            catch(Exception ex)
+            {
+                _logger.LogError("Error occurred while creating feedback"+ ex.Message + "\n"+ ex.StackTrace);
+                return Ok(HttpStatusCode.InternalServerError);
+            }
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            return View();
         }
     }
 }

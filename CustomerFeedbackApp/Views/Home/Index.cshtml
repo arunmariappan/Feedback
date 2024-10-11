@@ -4,7 +4,9 @@
 
 <div class="container-md shadow p-3 mb-5 rounded">
     <h4 class="mb-3 text-center">Feedback form</h4>
-    <form id="feedbackform">
+    @using (Html.BeginForm(FormMethod.Post, new { id = "feedbackform" }))
+    {
+        @Html.AntiForgeryToken()
         <div class="row mb-3">
             <label for="customername" class="col-sm-2 col-form-label">Name</label>
             <div class="col-sm-10">
@@ -52,92 +54,9 @@
                 <button type="submit" class="btn btn-primary">Submit</button>
             </div>
         </div>
-        
-    </form>
+    }   
 </div>
 
 @section Scripts {
-    <script>
-		$(document).ready(function () {
-
-			$("#feedbackform").validate({
-                submitHandler: function (form) {
-
-                    $.ajax({
-                        method: "post",
-                        url: "Home/CreateFeedback",
-                        dataType: 'html',
-                        data: $("#feedbackform").serialize(),
-                        cache: false,
-                        processData: false
-                    })
-                    .done(function (response) {
-                        var responseData = JSON.parse(response);
-                        if (responseData.status) {
-                            toastr["success"]("gov2biz", "Feedback sent successfully and Jira Issue created. Issue Id " + responseData.issueKey);
-                        } else {
-                            toastr["error"]("gov2biz", "Error occurred while saving the Feedback");
-                        }                        
-                    })
-                    .fail(function () {
-                        toastr["error"]("gov2biz", "Error occurred while sending Feedback");
-                    })
-                    .always(function () {
-                        $("#feedbackform").trigger("reset");
-                        setTimeout(function () {
-                            $("#overlay").fadeOut(300);
-                        }, 500);
-                    });
-
-                    return false;
-                },
-				rules: {
-					customername: {
-						required: true,
-                        minlength: 4
-					},					
-					emailaddress: {
-						required: true,
-						email: true
-					},
-					feedbacktype: "required",
-					feedbackmessage: {
-						required: true,
-                        minlength: 4
-					},                    
-                    appversion: "required",
-				},
-				messages: {
-					customername: {
-						required: "Please enter your full name",
-						minlength: "Your full name must consist of at least 4 characters"
-					},
-					emailaddress: "Please enter a valid email address",
-					feedbacktype: "Select the feedback type",
-                    feedbackmessage: {
-                        required: "Please enter your feedback message",
-                        minlength: "Your feedback must consist of at least 4 characters",
-                    },
-                    appversion: "Please enter the application version"
-				},
-                errorElement: "span",
-				errorPlacement: function (error, element) {
-					// Add the `help-block` class to the error element
-					error.addClass("help-block");
-
-					if (element.prop("type") === "checkbox") {
-						error.insertAfter(element.parent("label"));
-					} else {
-						error.insertAfter(element);
-					}
-				},
-				highlight: function (element, errorClass, validClass) {
-                    $(element).parents(".col-sm-10").addClass("has-error").removeClass("has-success");
-				},
-				unhighlight: function (element, errorClass, validClass) {
-                    $(element).parents(".col-sm-10").addClass("has-success").removeClass("has-error");
-				}
-			});
-		});
-    </script>
+    <script src="~/js/site.js"></script>
 }
